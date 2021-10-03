@@ -10,7 +10,7 @@ public class InstantiateScene : MonoBehaviour
     public GameObject DrunkenSkeleton;
     //Initial positions
     public Vector2 AxyInitialPos = new Vector2(0,0);
-    public Vector2 GazerInitialPos = new Vector2(-10,-10);
+    public Vector2 GazerInitialPos = new Vector2(2,-3);
     public Vector2 DrunkenSkeletonInitialPos = new Vector2(10,10);
 
     void Start()
@@ -18,7 +18,10 @@ public class InstantiateScene : MonoBehaviour
         GameObject InstantiatedAxy = Instantiate(Axy,AxyInitialPos,Quaternion.identity);
         transform.GetComponent<ChangeColors>().player = InstantiatedAxy;
         InstantiatedAxy.AddComponent<Movement>();
-        Instantiate(Gazer, GazerInitialPos, Quaternion.identity);
+
+        GameObject InstantiatedGazer = Instantiate(Gazer, GazerInitialPos, Quaternion.identity);
+        InstantiatedGazer.AddComponent<GazerMovement>();
+
         Instantiate(DrunkenSkeleton, DrunkenSkeletonInitialPos, Quaternion.identity);
     }
 
