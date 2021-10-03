@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionalScript : MonoBehaviour
+public class ChangeColors : MonoBehaviour
 {
     public GameObject mainCamera;
     public GameObject player;
@@ -12,8 +12,10 @@ public class OptionalScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera = GameObject.Find("Main Camera");
-        player = GameObject.Find("Player");
+        //mainCamera = GameObject.Find("Main Camera");
+        //mainCamera = Camera.main.gameObject;
+        //player = GameObject.Find("Player");
+
         backgroundBoolean = false;
         characterBoolean = false;
     }
@@ -36,7 +38,7 @@ public class OptionalScript : MonoBehaviour
         if (Input.GetKeyDown("k") && !characterBoolean)
         {
             characterBoolean = true;
-            player.GetComponent<SpriteRenderer>().color = Color.black;
+            player.GetComponent<SpriteRenderer>().color = Color.red;
         }
         else if (Input.GetKeyDown("k") && characterBoolean)
         {
