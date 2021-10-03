@@ -156,6 +156,7 @@ MonoBehaviour:
   Axy: {fileID: 8018952678704103743, guid: d0ac1db505da5f1428ef781a542c0dea, type: 3}
   Gazer: {fileID: 5597079081210082473, guid: 994116f6f300757418e40ce9978b8ea8, type: 3}
   DrunkenSkeleton: {fileID: 6087530885874357105, guid: 58367d89fe084744d9ae490b5eda44e1, type: 3}
+  Arrow: {fileID: 0}
   AxyInitialPos: {x: 0, y: 0}
   GazerInitialPos: {x: -5, y: -3}
   DrunkenSkeletonInitialPos: {x: 5, y: 3}

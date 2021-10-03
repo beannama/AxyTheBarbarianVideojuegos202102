@@ -8,7 +8,7 @@ public class GazerMovement : MonoBehaviour
     float initialY;
     bool isGoingUp = true;
     public int moveDistance = 3;
-    public float speed = 0.02f;
+    public float speed = 2f;
     void Start()
     {
         position = transform.position;
@@ -30,12 +30,12 @@ public class GazerMovement : MonoBehaviour
     {
         if (isGoingUp)
         {
-            position.y += speed;
+            position.y += speed/100f;
 
         }
         else
         {
-            position.y -= speed;
+            position.y -= speed/100f;
         }
         transform.position = position;
     }
