@@ -10,8 +10,7 @@ public class Movement : MonoBehaviour
     Vector3 lastPos;
     public float speed = 2.0f;          // Speed of movement
     private bool isMoving = false;
-
-    Vector3 facing;
+    private bool isColliding = false;
 
     public Rigidbody2D rb2D;
 
@@ -37,25 +36,25 @@ public class Movement : MonoBehaviour
             if (xInput > 0.01f && transform.position == pos)
             {
                 pos += Vector3.right;
-                IsFacingRight();
             }
             else if (xInput < -0.01f && transform.position == pos)
             {
                 pos += Vector3.left;
-                IsFacingLeft();
             }
             else if (yInput > 0.01f && transform.position == pos)
             {
                 pos += Vector3.up;
-                IsFacingUp();
             }
             else if (yInput < -0.01f && transform.position == pos)
             {
                 pos += Vector3.down;
-                IsFacingDown();
             }
-        }        
-        transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
+
+            transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
+
+        }
+
+        
     }
 
     private void LateUpdate()
@@ -78,40 +77,22 @@ public class Movement : MonoBehaviour
         return returnedBoolean;
     }
 
-    void IsFacingRight()
-    {
-        facing = new Vector3(1, 0, 0);
-    }
-    void IsFacingLeft()
-    {
-        facing = new Vector3(-1, 0, 0);
-    }
-    void IsFacingUp()
-    {
-        facing = new Vector3(0, 1, 0);
-    }
-    void IsFacingDown()
-    {
-        facing = new Vector3(0, -1, 0);
-    }
-
     private void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.name == "Wall" || col.gameObject.name == "DrunkenSkeleton" || col.gameObject.name == "Gazer")
         {
+            isColliding = true;
             Debug.Log("CollisionEnter2D");
             EditorApplication.Beep();
-            transform.position = lastPos;
-            //transform.position = Vector3.MoveTowards(transform.position, lastPos, Time.deltaTime * speed);
         }
         
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D(Collision2D col)
     {
-        if (collision.gameObject.name == "Wall")
+        if (col.gameObject.name == "Wall" || col.gameObject.name == "DrunkenSkeleton" || col.gameObject.name == "Gazer")
         {
-           
+            isColliding = false;
         }
     }
 
