@@ -32,7 +32,6 @@ public class Movement : MonoBehaviour
         }
         else
         {
-            lastPos = transform.position;
             if (xInput > 0.01f && transform.position == pos)
             {
                 pos += Vector3.right;
@@ -50,9 +49,10 @@ public class Movement : MonoBehaviour
                 pos += Vector3.down;
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
+            
 
         }
+	transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
 
         
     }
