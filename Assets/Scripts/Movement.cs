@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Movement : MonoBehaviour
 {
     Vector3 pos;                        // For movement
@@ -21,6 +22,7 @@ public class Movement : MonoBehaviour
         if (isMoving)
         {
             //WAIT FOR THE PLAYER TO GET TO THE PLACE
+            //DO NOTHING
         }
         else
         {
@@ -63,6 +65,8 @@ public class Movement : MonoBehaviour
         }
         return returnedBoolean;
     }
+
+
 
 
 }

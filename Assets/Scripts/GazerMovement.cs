@@ -11,6 +11,9 @@ public class GazerMovement : MonoBehaviour
     Vector2 position;
     float initialY;
     bool isGoingUp = true;
+
+    private bool isMoving = false;
+
     //public int moveDistance = 3;
 
     void Start()
@@ -23,39 +26,43 @@ public class GazerMovement : MonoBehaviour
     {
         Vector3 current_position = transform.position;
 
-        if(current_position.y >= initialY)
+        if (isMoving)
         {
-            pos += Vector3.down;
+            //Wait for movement to stop
         }
-        else if(current_position.y <= initialY)
+        else
         {
-            pos += Vector3.up;
+            if (current_position.y >= initialY)
+            {
+                pos += Vector3.down;
+            }
+            else if (current_position.y <= initialY)
+            {
+                pos += Vector3.up;
+            }
         }
-
-        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * speed);    // Move there
-
-
-        //if(transform.position.y>=initialY+moveDistance)
-        //{
-        //    isGoingUp = false;
-        //}
-        //if(transform.position.y <= initialY)
-        //{
-        //    isGoingUp = true;
-        //}
-
+        transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
 
     }
-    //void FixedUpdate()
-    //{
-    //    if (isGoingUp)
-    //    {
-    //        position.y += speed/100f;
-    //    }
-    //    else
-    //    {
-    //        position.y -= speed/100f;
-    //    }
-    //    transform.position = position;
-    //}
+
+    private void LateUpdate()
+    {
+        isMoving = IsMoving(transform.position, pos);
+    }
+
+    bool IsMoving(Vector3 initialPos, Vector3 targetPos)
+    {
+        bool returnedBoolean;
+
+        if (Vector3.Distance(initialPos, targetPos) < 0.1f)
+        {
+            returnedBoolean = false;
+        }
+        else
+        {
+            returnedBoolean = true;
+        }
+        return returnedBoolean;
+    }
+
 }
