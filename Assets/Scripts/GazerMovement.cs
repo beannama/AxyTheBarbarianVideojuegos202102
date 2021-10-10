@@ -4,39 +4,58 @@ using UnityEngine;
 
 public class GazerMovement : MonoBehaviour
 {
+    Vector3 pos;
+    public float speed = 2.0f;
+
+
     Vector2 position;
     float initialY;
     bool isGoingUp = true;
-    public int moveDistance = 3;
-    public float speed = 2f;
+    //public int moveDistance = 3;
+
     void Start()
     {
-        position = transform.position;
-        initialY = position.y;
+        pos = transform.position;
+        initialY = pos.y;
     }
 
     private void Update()
     {
-        if(transform.position.y>=initialY+moveDistance)
-        {
-            isGoingUp = false;
-        }
-        if(transform.position.y <= initialY)
-        {
-            isGoingUp = true;
-        }
-    }
-    void FixedUpdate()
-    {
-        if (isGoingUp)
-        {
-            position.y += speed/100f;
+        Vector3 current_position = transform.position;
 
-        }
-        else
+        if(current_position.y >= initialY)
         {
-            position.y -= speed/100f;
+            pos += Vector3.down;
         }
-        transform.position = position;
+        else if(current_position.y <= initialY)
+        {
+            pos += Vector3.up;
+        }
+
+        transform.position = Vector3.Lerp(transform.position, pos, Time.deltaTime * speed);    // Move there
+
+
+        //if(transform.position.y>=initialY+moveDistance)
+        //{
+        //    isGoingUp = false;
+        //}
+        //if(transform.position.y <= initialY)
+        //{
+        //    isGoingUp = true;
+        //}
+
+
     }
+    //void FixedUpdate()
+    //{
+    //    if (isGoingUp)
+    //    {
+    //        position.y += speed/100f;
+    //    }
+    //    else
+    //    {
+    //        position.y -= speed/100f;
+    //    }
+    //    transform.position = position;
+    //}
 }
