@@ -7,14 +7,10 @@ public class GazerMovement : MonoBehaviour
     Vector3 pos;
     public float speed = 2.0f;
 
-
-    Vector2 position;
     float initialY;
-    bool isGoingUp = true;
-
     private bool isMoving = false;
 
-    //public int moveDistance = 3;
+    public float moveDistance = 3f;
 
     void Start()
     {
@@ -34,14 +30,14 @@ public class GazerMovement : MonoBehaviour
         {
             if (current_position.y >= initialY)
             {
-                pos += Vector3.down;
+                pos += Vector3.down *  moveDistance;
             }
             else if (current_position.y <= initialY)
             {
-                pos += Vector3.up;
+                pos += Vector3.up * moveDistance;
             }
         }
-        transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
+        transform.position = Vector3.MoveTowards(transform.position, pos , Time.deltaTime * speed);    // Move there
 
     }
 
