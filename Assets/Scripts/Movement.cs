@@ -52,9 +52,7 @@ public class Movement : MonoBehaviour
             
 
         }
-	transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there
-
-        
+	transform.position = Vector3.MoveTowards(transform.position, pos, Time.deltaTime * speed);    // Move there  
     }
 
     private void LateUpdate()

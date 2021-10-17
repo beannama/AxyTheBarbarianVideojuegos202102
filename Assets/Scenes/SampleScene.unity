@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1347611421474143498, guid: 994116f6f300757418e40ce9978b8ea8, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5597079081210082473, guid: 994116f6f300757418e40ce9978b8ea8, type: 3}
       propertyPath: m_Name
       value: Gazer
@@ -289,7 +293,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  isMoving: 0
   isColliding: 0
 --- !u!50 &403762806
 Rigidbody2D:
@@ -566,6 +569,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 17196139532701224, guid: 58367d89fe084744d9ae490b5eda44e1, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6087530885874357105, guid: 58367d89fe084744d9ae490b5eda44e1, type: 3}
       propertyPath: m_Name
       value: DrunkenSkeleton

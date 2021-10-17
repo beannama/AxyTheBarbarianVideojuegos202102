@@ -5,15 +5,45 @@ using UnityEngine;
 public class AxyInputController : MonoBehaviour
 {
     AxyPhysicsController ph;
+    AxyStateController state;
     void Start()
     {
         ph = GetComponent<AxyPhysicsController>();
+        state = GetComponent<AxyStateController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ph.horizontalMovement = Input.GetAxisRaw("Horizontal");
-        ph.verticalMovement = Input.GetAxisRaw("Vertical");
+        float xInput = Input.GetAxis("Horizontal");
+        float yInput = Input.GetAxis("Vertical");
+
+        if (state.isMoving)
+        {
+        }
+        else
+        {
+            Vector2 position2d = transform.position;
+            if(position2d == state.objectivePos)
+            {
+                if (xInput > 0.01f)
+                {
+                    position2d += Vector2.right;
+                }
+                else if (xInput < -0.01f)
+                {
+                    position2d += Vector2.left;
+                }
+                else if (yInput > 0.01f)
+                {
+                    position2d += Vector2.up;
+                }
+                else if (yInput < -0.01f)
+                {
+                    position2d += Vector2.down;
+                }
+            }
+            state.objectivePos = position2d;
+        }
     }
 }
