@@ -5,24 +5,25 @@ using UnityEngine;
 public class DrunkenSkeletonArrowThrow : MonoBehaviour
 {
     public GameObject Arrow;
-    Vector3 pos;
+    Vector2 pos;
     public float AttackSpeed = 1f;
     public int intRange = 3;
 
     void Start()
     {
+        pos = transform.position;
         StartCoroutine(ThrowArrowLoop());
     }
 
     // Update is called once per frame
     void Update()
     {
-        pos = transform.position;
+        
     }
 
     IEnumerator ThrowArrowLoop()
     {
-        Vector3 newPos = RandomVectorInRange(intRange);
+        Vector2 newPos = RandomVectorInRange(intRange);
         GameObject InstantiatedArrow = Instantiate(Arrow, newPos, Quaternion.identity);
         InstantiatedArrow.transform.Rotate(new Vector3(0, 0, -90));
         yield return new WaitForSeconds(AttackSpeed * Time.deltaTime);
@@ -32,9 +33,9 @@ public class DrunkenSkeletonArrowThrow : MonoBehaviour
 
     }
 
-    Vector3 RandomVectorInRange(int range)
+    Vector2 RandomVectorInRange(int range)
     {
-        Vector3 returnedVector3;
+        Vector2 returnedVector2;
 
         int xSkeletonPosition = (int)pos.x;
         int ySkeletonPosition = (int)pos.y;
@@ -42,8 +43,8 @@ public class DrunkenSkeletonArrowThrow : MonoBehaviour
         float xRange = Random.Range(xSkeletonPosition - range, xSkeletonPosition + range);
         float yRange = Random.Range(ySkeletonPosition - range, ySkeletonPosition + range);
 
-        returnedVector3 = new Vector3(xRange, yRange, 0); 
+        returnedVector2 = new Vector2(xRange, yRange); 
 
-        return returnedVector3;
+        return returnedVector2;
     }
 }

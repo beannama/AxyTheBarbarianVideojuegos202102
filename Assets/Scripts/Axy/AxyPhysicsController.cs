@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AxyPhysicsController : MonoBehaviour
 {
@@ -23,10 +24,24 @@ public class AxyPhysicsController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.name == "Wall" || col.gameObject.name == "DrunkenSkeleton" || col.gameObject.name == "Gazer")
+        if (col.gameObject.name == "Wall")
         {
             state.isColliding = true;
             sound.MakeSound("Collision with " + col.gameObject.name + ".");
+        }
+
+        if(col.gameObject.name == "DrunkenSkeleton" || col.gameObject.name == "Gazer" || col.gameObject.name == "Arrow")
+        {
+            //lose condition
+            Debug.Log("You are dead.");
+            SceneManager.LoadScene("SampleScene");
+        }
+
+        if (col.gameObject.name == "Exit")
+        {
+            //win condition
+            Debug.Log("You win");
+            SceneManager.LoadScene("SampleScene");
         }
     }
 

@@ -9,6 +9,7 @@ public class AxyStateController : MonoBehaviour
     public bool isColliding = false;
     public bool isMoving = false;
     public Vector2 objectivePos;
+    public bool isDead = false;
     private void Start()
     {
         objectivePos = transform.position;
