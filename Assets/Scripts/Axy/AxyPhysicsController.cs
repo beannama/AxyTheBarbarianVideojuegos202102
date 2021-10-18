@@ -41,7 +41,7 @@ public class AxyPhysicsController : MonoBehaviour
         {
             //win condition
             Debug.Log("You win");
-            SceneManager.LoadScene("SampleScene");
+            //SceneManager.LoadScene("SampleScene");
         }
     }
 
