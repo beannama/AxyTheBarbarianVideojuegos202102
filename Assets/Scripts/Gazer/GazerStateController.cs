@@ -5,5 +5,4 @@ using UnityEngine;
 public class GazerStateController : MonoBehaviour
 {
     public bool isGoingUp = true;
-    public bool isMoving = false;
 }

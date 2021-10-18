@@ -13,13 +13,28 @@ public class GazerMovementController : MonoBehaviour
     void Start()
     {
         objectivePos = transform.position;
+        objectivePos.y += moveDistance;
         state = GetComponent<GazerStateController>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChangeDirection();
+        if(state.isGoingUp)
+        {
+            if (objectivePos.y <= transform.position.y)
+            {
+                ChangeDirection();
+            }
+        }
+        else
+        {
+            if (objectivePos.y >= transform.position.y)
+            {
+                ChangeDirection();
+            }
+        }
+        
     }
 
     private void FixedUpdate()
@@ -29,16 +44,15 @@ public class GazerMovementController : MonoBehaviour
 
     public void ChangeDirection()
     {
-        if(state.isMoving)
+        if (!state.isGoingUp)
         {
-            if (state.isGoingUp)
-            {
-                objectivePos.y = transform.position.y + moveDistance;
-            }
-            else
-            {
-                objectivePos.y = transform.position.y - moveDistance;
-            }
+            objectivePos.y = transform.position.y + moveDistance;
+            state.isGoingUp = true;
+        }
+        else
+        {
+            objectivePos.y = transform.position.y - moveDistance;
+            state.isGoingUp = false;
         }
     }
 }
