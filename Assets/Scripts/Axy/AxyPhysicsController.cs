@@ -13,6 +13,8 @@ public class AxyPhysicsController : MonoBehaviour
 
     public static event Action<string> WinConditionNotification = delegate { };
 
+    public static event Action<string> CollisionNotification = delegate { };
+
     void Start()
     {
         state = GetComponent<AxyStateController>();
@@ -29,8 +31,7 @@ public class AxyPhysicsController : MonoBehaviour
     {
         if (col.gameObject.name == "Wall")
         {
-            state.isColliding = true;
-            sound.MakeSound("Collision with " + col.gameObject.name + ".");
+            CollisionNotification("Wall");
         }
 
         if(col.gameObject.name == "DrunkenSkeleton" || col.gameObject.name == "Gazer" || col.gameObject.name == "Arrow")
@@ -43,7 +44,6 @@ public class AxyPhysicsController : MonoBehaviour
         if (col.gameObject.name == "Exit")
         {
             //win condition
-           
             WinConditionNotification("Exit");
             //SceneManager.LoadScene("SampleScene");
         }
