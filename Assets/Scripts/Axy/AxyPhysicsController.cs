@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class AxyPhysicsController : MonoBehaviour
 
     AxyStateController state;
     AxySoundController sound;
+
+    public static event Action<string> WinConditionNotification = delegate { };
 
     void Start()
     {
@@ -40,7 +43,8 @@ public class AxyPhysicsController : MonoBehaviour
         if (col.gameObject.name == "Exit")
         {
             //win condition
-            Debug.Log("You win");
+           
+            WinConditionNotification("Exit");
             //SceneManager.LoadScene("SampleScene");
         }
     }
