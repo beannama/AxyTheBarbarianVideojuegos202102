@@ -98,8 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Arrow: {fileID: 2724789544221895870, guid: 82aed93e56eaba647aa49e8e66239d47, type: 3}
-  AttackSpeed: 120
-  intRange: 2
+  AttackSpeed: 1
+  intRange: 3
 --- !u!61 &5906672772368975389
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6087530885874357105}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

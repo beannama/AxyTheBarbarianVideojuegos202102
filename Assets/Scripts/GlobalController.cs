@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public static class GlobalController
 {
@@ -30,6 +31,7 @@ public static class GlobalController
         if(obj == "Exit")
         {
             Debug.Log("You win");
+            SceneManager.LoadScene(0);
         }
     }
 

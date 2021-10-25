@@ -27,7 +27,7 @@ public class DrunkenSkeletonArrowThrow : MonoBehaviour
         GameObject InstantiatedArrow = Instantiate(Arrow, newPos, Quaternion.identity);
         InstantiatedArrow.name = "Arrow";
         InstantiatedArrow.transform.Rotate(new Vector3(0, 0, -90));
-        yield return new WaitForSeconds(AttackSpeed * Time.deltaTime);
+        yield return new WaitForSeconds(1f/AttackSpeed);
         Destroy(InstantiatedArrow);
 
         StartCoroutine(ThrowArrowLoop());
