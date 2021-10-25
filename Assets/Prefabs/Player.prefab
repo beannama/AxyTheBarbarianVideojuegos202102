@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c9669ab9ce10a34ca4f7f53b0d79240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   isColliding: 0
   isMoving: 0
   objectivePos: {x: 0, y: 0}
