@@ -23,8 +23,8 @@ public class AxyStateController : MonoBehaviour
 
     public void CancelMovement()
     {
-        objectivePos = transform.position;
         isMoving = false;
+        objectivePos = transform.position;
     }
 
     bool IsMoving()
@@ -38,7 +38,7 @@ public class AxyStateController : MonoBehaviour
 
         if (isColliding)
         {
-            CancelMovement();
+            //CancelMovement();
         }
         return returnedBoolean;
     }

@@ -36,6 +36,10 @@ public class GazerMovementController : MonoBehaviour
         }
         
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ChangeDirection();
+    }
 
     private void FixedUpdate()
     {

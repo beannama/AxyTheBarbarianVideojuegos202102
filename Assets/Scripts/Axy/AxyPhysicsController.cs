@@ -38,7 +38,7 @@ public class AxyPhysicsController : MonoBehaviour
         {
             //lose condition
             Debug.Log("You are dead.");
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene(0);
         }
 
         if (col.gameObject.name == "Exit")
@@ -47,6 +47,11 @@ public class AxyPhysicsController : MonoBehaviour
             WinConditionNotification("Exit");
             //SceneManager.LoadScene("SampleScene");
         }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        state.CancelMovement();
+        state.isColliding = true;
     }
 
     private void OnCollisionExit2D(Collision2D col)

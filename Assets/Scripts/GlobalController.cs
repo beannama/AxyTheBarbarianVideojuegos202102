@@ -3,39 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class GlobalController : MonoBehaviour
+public static class GlobalController
 {
-    public AudioSource audioSource;
-    public GameObject axyGameObject;
+    //public AudioSource audioSource;
+    public static GameObject axyGameObject;
 
-    AxyStateController state;
+    static AxyStateController state;
 
-    AxySoundController sound;
+    static AxySoundController sound;
 
     // Start is called before the first frame update
-    void Start()
+    public static void Instantiate()
     {
         axyGameObject = GameObject.Find("Player");
         state = axyGameObject.GetComponent<AxyStateController>();
-        sound = GetComponent<AxySoundController>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnEnable()
-    {
+        sound = axyGameObject.GetComponent<AxySoundController>();
         AxyPhysicsController.WinConditionNotification += AxyPhysicsController_WinConditionNotification;
-
         AxyPhysicsController.CollisionNotification += AxyPhysicsController_CollisionNotification;
+        Debug.Log("Listeners Attached");
     }
 
 
 
-    private void AxyPhysicsController_WinConditionNotification(string obj)
+    private static void AxyPhysicsController_WinConditionNotification(string obj)
     {
         if(obj == "Exit")
         {
@@ -43,17 +33,16 @@ public class GlobalController : MonoBehaviour
         }
     }
 
-    private void AxyPhysicsController_CollisionNotification(string obj)
+    private static void AxyPhysicsController_CollisionNotification(string obj)
     {
         if (obj == "Wall")
         {
-            EditorApplication.Beep();
-
-            state.isColliding = true;
+            state.CancelMovement();
+            sound.MakeSound("You collide with a wall");
         }
     }
 
-    private void OnDisable()
+    public static void DisableListeners()
     {
         AxyPhysicsController.WinConditionNotification -= AxyPhysicsController_WinConditionNotification;
 

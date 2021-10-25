@@ -6,6 +6,9 @@ public class MapGenerator : MonoBehaviour
 {
     public GameObject Wall = null;
     public GameObject Exit = null;
+    public GameObject Gazer = null;
+    public GameObject Skeleton = null;
+    public GameObject Player = null;
     private string Load;
     private string id;
     // Start is called before the first frame update
@@ -23,12 +26,35 @@ public class MapGenerator : MonoBehaviour
             { 
                 GameObject t;
                 t = (GameObject)(Instantiate (Wall, new Vector2(x, y), Quaternion.identity));
+                t.name = "Wall";
                 x += 1;
             }
             else if (s[i] == '2')
             {
                 GameObject t;
                 t = (GameObject)(Instantiate (Exit, new Vector2(x, y), Quaternion.identity));
+                t.name = "Exit";
+                x += 1;
+            }
+            else if (s[i] == 'G')
+            {
+                GameObject t;
+                t = (GameObject)(Instantiate(Gazer, new Vector2(x, y), Quaternion.identity));
+                t.name = "Gazer";
+                x += 1;
+            }
+            else if (s[i] == 'S')
+            {
+                GameObject t;
+                t = (GameObject)(Instantiate(Skeleton, new Vector2(x, y), Quaternion.identity));
+                t.name = "DrunkenSkeleton";
+                x += 1;
+            }
+            else if (s[i] == 'P')
+            {
+                GameObject t;
+                t = (GameObject)(Instantiate(Player, new Vector2(x, y), Quaternion.identity));
+                t.name = "Player";
                 x += 1;
             }
             else if (s[i] == '*')
@@ -41,5 +67,7 @@ public class MapGenerator : MonoBehaviour
             }
             
         }
+        GlobalController.Instantiate();
+        CameraMovement.AttachToPlayer();
     }
 }
