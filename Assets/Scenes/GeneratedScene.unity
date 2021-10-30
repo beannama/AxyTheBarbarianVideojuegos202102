@@ -266,4 +266,5 @@ MonoBehaviour:
   Exit: {fileID: 8080715758739268682, guid: 14e436fbe2c901544a58e8d5ddf7be0d, type: 3}
   Gazer: {fileID: 5597079081210082473, guid: 994116f6f300757418e40ce9978b8ea8, type: 3}
   Skeleton: {fileID: 6087530885874357105, guid: 58367d89fe084744d9ae490b5eda44e1, type: 3}
+  Rat: {fileID: 3411389407330238992, guid: e60c5cda5e682de4da979eec440bf6f1, type: 3}
   Player: {fileID: 8018952678704103743, guid: d0ac1db505da5f1428ef781a542c0dea, type: 3}

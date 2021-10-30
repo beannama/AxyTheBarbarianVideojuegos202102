@@ -38,11 +38,11 @@ public class DrunkenSkeletonArrowThrow : MonoBehaviour
     {
         Vector2 returnedVector2;
 
-        int xSkeletonPosition = (int)pos.x;
-        int ySkeletonPosition = (int)pos.y;
+        int xPosition = (int)pos.x;
+        int yPosition = (int)pos.y;
 
-        float xRange = Random.Range(xSkeletonPosition - range, xSkeletonPosition + range) + 0.5f;
-        float yRange = Random.Range(ySkeletonPosition - range, ySkeletonPosition + range) + 0.5f;
+        float xRange = Random.Range(xPosition - range, xPosition + range) + 0.5f;
+        float yRange = Random.Range(yPosition - range, yPosition + range) + 0.5f;
 
         returnedVector2 = new Vector2(xRange, yRange); 
 
