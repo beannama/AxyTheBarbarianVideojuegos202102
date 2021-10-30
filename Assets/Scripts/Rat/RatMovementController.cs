@@ -5,7 +5,8 @@ using UnityEngine;
 public class RatMovementController : MonoBehaviour
 {
     RatStateController state;
-    public int moveDistance = 3;
+    GameObject axy;
+
     public float speed = 2.0f;
 
     public Vector2 objectivePos;
@@ -14,7 +15,7 @@ public class RatMovementController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        axy = GameObject.Find("Player");
         objectivePos = transform.position;
         pos = transform.position;
         state = GetComponent<RatStateController>();
@@ -25,17 +26,25 @@ public class RatMovementController : MonoBehaviour
     {
         state.isMoving = IsMoving();
 
-
         if (state.isMoving) ; //IsMoving, do nothing
         else
         {
             MoveRandom();
         }
 
+        
     }
 
     private void FixedUpdate()
     {
+        if (state.isFleeing)
+        {
+            Flee();
+        }
+        else
+        {
+
+        }
         transform.position = Vector3.MoveTowards(transform.position, objectivePos, Time.deltaTime * speed);
     }
 
@@ -109,6 +118,33 @@ public class RatMovementController : MonoBehaviour
                 position2d += Vector2.down;
             }
         }
+        objectivePos = position2d;
+    }
+
+    public void Flee()
+    {
+        Vector3 axyPosition = axy.transform.position;
+        Vector3 dir = transform.position - axyPosition;
+
+        //Get away from Axy
+        Vector2 position2d = transform.position;
+        if (dir.x > 0)
+        {
+            position2d += Vector2.right;
+        }
+        else if (dir.x < 0)
+        {
+            position2d += Vector2.left;
+        }
+        if (dir.y > 0)
+        {
+            position2d += Vector2.up;
+        }
+        else if (dir.y < 0)
+        {
+            position2d += Vector2.down;
+        }
+        Debug.Log(dir);
         objectivePos = position2d;
     }
 
