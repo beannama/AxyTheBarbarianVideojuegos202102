@@ -136,7 +136,7 @@ public class RatMovementController : MonoBehaviour
         {
             position2d += Vector2.left;
         }
-        if (dir.y > 0)
+        else if (dir.y > 0)
         {
             position2d += Vector2.up;
         }
@@ -144,7 +144,6 @@ public class RatMovementController : MonoBehaviour
         {
             position2d += Vector2.down;
         }
-        Debug.Log(dir);
         objectivePos = position2d;
     }
 
