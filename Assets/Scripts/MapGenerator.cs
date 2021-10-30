@@ -17,8 +17,8 @@ public class MapGenerator : MonoBehaviour
         TextAsset t1 = (TextAsset)Resources.Load("lvlt", typeof(TextAsset));
         string s = t1.text;
         int i;
-        int y = 10;
-        int x = -20;
+        float y = 10.5f;
+        float x = -20.5f;
         s = s.Replace("\n","");
         for (i = 0; i < s.Length; i++)
         {
@@ -27,43 +27,43 @@ public class MapGenerator : MonoBehaviour
                 GameObject t;
                 t = (GameObject)(Instantiate (Wall, new Vector2(x, y), Quaternion.identity));
                 t.name = "Wall";
-                x += 1;
+                x += 1f;
             }
             else if (s[i] == '2')
             {
                 GameObject t;
                 t = (GameObject)(Instantiate (Exit, new Vector2(x, y), Quaternion.identity));
                 t.name = "Exit";
-                x += 1;
+                x += 1f;
             }
             else if (s[i] == 'G')
             {
                 GameObject t;
                 t = (GameObject)(Instantiate(Gazer, new Vector2(x, y), Quaternion.identity));
                 t.name = "Gazer";
-                x += 1;
+                x += 1f;
             }
             else if (s[i] == 'S')
             {
                 GameObject t;
                 t = (GameObject)(Instantiate(Skeleton, new Vector2(x, y), Quaternion.identity));
                 t.name = "DrunkenSkeleton";
-                x += 1;
+                x += 1f;
             }
             else if (s[i] == 'P')
             {
                 GameObject t;
                 t = (GameObject)(Instantiate(Player, new Vector2(x, y), Quaternion.identity));
                 t.name = "Player";
-                x += 1;
+                x += 1f;
             }
             else if (s[i] == '*')
             {
-                y -= 1;
-                x = -21;
+                y -= 1f;
+                x = -21.5f;
             }
             else {
-                x += 1;
+                x += 1f;
             }
             
         }
