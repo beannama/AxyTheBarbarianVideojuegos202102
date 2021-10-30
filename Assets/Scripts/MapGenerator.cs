@@ -9,6 +9,7 @@ public class MapGenerator : MonoBehaviour
     public GameObject Gazer = null;
     public GameObject Skeleton = null;
     public GameObject Rat = null;
+    public GameObject Zombie = null;
     public GameObject Player = null;
     private string Load;
     private string id;
@@ -56,6 +57,13 @@ public class MapGenerator : MonoBehaviour
                 GameObject t;
                 t = (GameObject)(Instantiate(Rat, new Vector2(x, y), Quaternion.identity));
                 t.name = "Rat";
+                x += 1f;
+            }
+            else if (s[i] == 'Z')
+            {
+                GameObject t;
+                t = (GameObject)(Instantiate(Zombie, new Vector2(x,y), Quaternion.identity));
+                t.name = "Zombie";
                 x += 1f;
             }
             else if (s[i] == 'P')
