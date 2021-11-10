@@ -41,6 +41,12 @@ public class AxyPhysicsController : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
+        if(col.gameObject.name == "Rat" && col.gameObject.GetComponent<RatStateController>().isAgressive)
+        {
+            Debug.Log("You are dead.");
+            SceneManager.LoadScene(0);
+        }
+
         if (col.gameObject.name == "Exit")
         {
             //win condition

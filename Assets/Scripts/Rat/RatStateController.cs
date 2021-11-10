@@ -4,7 +4,24 @@ using UnityEngine;
 
 public class RatStateController : MonoBehaviour
 {
-    public bool isFleeing = false;
-    public bool isMoving = false;
+    public bool isIdle = true;
     public bool isColliding = false;
+    public bool isAgressive = false;
+    public NightDay nightDayController;
+
+    private void Start()
+    {
+        nightDayController=GameObject.Find("NightDayController").GetComponent<NightDay>();
+    }
+    private void Update()
+    {
+        if(nightDayController.isDay)
+        {
+            isAgressive = false;
+        }
+        else
+        {
+            isAgressive = true;
+        }
+    }
 }
