@@ -36,7 +36,12 @@ public class RatMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(state.isAgressive)
+        StateManager();
+    }
+
+    void StateManager()
+    {
+        if (state.isAgressive)
         {
             fleeDistance = agressiveDistance;
         }
@@ -45,28 +50,32 @@ public class RatMovementController : MonoBehaviour
             fleeDistance = notAgressiveDistance;
         }
 
-        if(state.isIdle)
+        if (state.isIdle)
         {
-            if(Vector2.Distance(axy.transform.position,transform.position)<fleeDistance)
+            if (Vector2.Distance(axy.transform.position, transform.position) < fleeDistance)
             {
                 state.isIdle = false;
             }
         }
         else
         {
-            if(Vector2.Distance(axy.transform.position, transform.position) >= fleeDistance)
+            if (Vector2.Distance(axy.transform.position, transform.position) >= fleeDistance)
             {
                 state.isIdle = true;
-                //CancelMovement();
             }
         }
     }
 
     private void FixedUpdate()
     {
-        if(state.isAgressive)
+        DecisionTree();
+    }
+
+    void DecisionTree()
+    {
+        if (state.isAgressive)
         {
-            if(state.isIdle)
+            if (state.isIdle)
             {
                 if (state.isColliding)
                 {
@@ -115,12 +124,6 @@ public class RatMovementController : MonoBehaviour
             }
         }
     }
-    /*
-    public void CancelMovement()
-    {
-        objectivePos = transform.position;
-    }
-    */
 
     void Attack()
     {
@@ -241,6 +244,7 @@ public class RatMovementController : MonoBehaviour
         objectivePos = position2d;
         transform.position = Vector3.MoveTowards(transform.position, objectivePos, Time.deltaTime * speed);
     }
+
     void Idle()
     {
         if (Vector2.Distance(lastPosChanged, transform.position) > 2 || Vector2.Distance(lastPos, transform.position) < 0.0001)

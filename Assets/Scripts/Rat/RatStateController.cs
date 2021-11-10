@@ -15,7 +15,12 @@ public class RatStateController : MonoBehaviour
     }
     private void Update()
     {
-        if(nightDayController.isDay)
+        IsAgressive();
+    }
+
+    private void IsAgressive()
+    {
+        if (nightDayController.isDay)
         {
             isAgressive = false;
         }
